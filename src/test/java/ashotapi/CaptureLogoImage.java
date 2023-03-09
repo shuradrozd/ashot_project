@@ -26,7 +26,12 @@ public class CaptureLogoImage {
     WebDriver wd;
 
     @BeforeSuite
-    public void setup() {
+    public void setup() throws InterruptedException {
+        File screenshots = new File("./screenshots");
+        File[] files = screenshots.listFiles();
+        for (File file : files) {
+            file.delete();
+        }
         WebDriverManager.chromedriver().setup();
         wd = new ChromeDriver();
         wd.manage().window().maximize();
@@ -73,6 +78,7 @@ public class CaptureLogoImage {
 
         Assert.assertTrue(diff.hasDiff());
     }
+
     @Test
     public void elementsOnPagesDiff() throws IOException {
         wd.get("https://google.com/");
