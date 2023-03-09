@@ -76,6 +76,9 @@ public class CaptureLogoImage {
         ImageDiffer imgDiff = new ImageDiffer();
         ImageDiff diff = imgDiff.makeDiff(actualImage, expectedImage);
 
+        ImageIO.write(diff.getMarkedImage(), "png", new File("./screenshots/diff.png"));
+        ImageIO.write(diff.getTransparentMarkedImage(), "png", new File("./screenshots/diffTwo.png"));
+
         Assert.assertTrue(diff.hasDiff());
     }
 
@@ -96,6 +99,9 @@ public class CaptureLogoImage {
 
         ImageDiffer imgDiff = new ImageDiffer();
         ImageDiff diff = imgDiff.makeDiff(actualImage, expectedImage);
+
+        ImageIO.write(diff.getMarkedImage(), "png", new File("./screenshots/diffPage.png"));
+        ImageIO.write(diff.getTransparentMarkedImage(), "png", new File("./screenshots/diffPageTwo.png"));
 
         Assert.assertTrue(diff.hasDiff());
     }
